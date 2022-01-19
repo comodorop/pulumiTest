@@ -1,0 +1,5 @@
+config:
+  aws:region: us-east-1
+  test:DB_PASSWORD: 123456
+  test:DB_USER: ROOT
+  test:Password: HolaSecret
