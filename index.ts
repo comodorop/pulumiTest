@@ -11,20 +11,27 @@ import * as aws from "@pulumi/aws";
 
 // Create a new KMS key
 
-const key = new aws.kms.Key("a", {
-    deletionWindowInDays: 10,
-    description: "KMS key 1",
-});
+// const key = new aws.kms.Key("a", {
+//     deletionWindowInDays: 10,
+//     description: "KMS key 1",
+// });
+// const alias = new aws.kms.Alias("KMSPablo", {targetKeyId: key.keyId});
+
 
 const secret1 = new aws.kms.Key("DB_USER", {
     deletionWindowInDays: 10,
     description: "ROOT",
 });
+new aws.kms.Alias("SecretUserPablo", {targetKeyId: secret1.keyId});
+
 
 const secret2 = new aws.kms.Key("DB_PASSWORD", {
     deletionWindowInDays: 10,
     description: "123456",
 });
+
+new aws.kms.Alias("SecretPasswordPablo", {targetKeyId: secret2.keyId});
+
 
 const config = new pulumi.Config();
 
